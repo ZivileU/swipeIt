@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+  
+body {
+    font-family: sans-serif; 
+    background: linear-gradient(to right, white , gray);
+    height: 100vh;
+    width: 100vw;
+}
+a {
+    color: #343A40;
+}
+.page {
+    display: grid;
+    justify-content: center;
+    align-items: center; 
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+#pageLogIn {
+    display: grid;
+}
+#uploadImg{
+    width: 300px;
+}
