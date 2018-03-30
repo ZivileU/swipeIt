@@ -1,11 +1,14 @@
 
 <?php
+    session_start();
+
     if( isset($_POST['txtFirstName']) && isset($_POST['txtLastName']) && isset($_POST['txtEmail']) && isset($_POST['txtPassword']) && isset($_FILES['image']) && $_FILES['image']['size'] != 0 ){
         
         $sFirstName = $_POST['txtFirstName'];
         $sLastName = $_POST['txtLastName'];
         $sEmail = $_POST['txtEmail'];
         $sPassword = $_POST['txtPassword'];
+        $sHobbies = $_POST['txtHobbies'];
         $sAge = $_POST['iAge'];
         $sUniqueId = uniqid();
         
@@ -14,6 +17,7 @@
         strlen($sLastName) >= 2 && strlen($sLastName) <= 20 &&
         strlen($sEmail) >= 5 && strlen($sEmail) <= 30 &&
         strlen($sPassword) >= 3 && strlen($sPassword) <= 30 &&
+        strlen($sHobbies) <=50 &&
         strlen($sAge) >= 1 && strlen($sAge) <= 3){
             
             $sajUsers = file_get_contents( '../users.txt' );
@@ -23,6 +27,7 @@
             $jUser->lastname = $sLastName;
             $jUser->email = $sEmail;
             $jUser->password = $sPassword;
+            $jUser->hobbies = $sHobbies;
             $jUser->age = $sAge;
             $jUser->id = $sUniqueId;
             array_push( $ajUsers , $jUser );
@@ -43,6 +48,7 @@
         }else{
             echo "The photo file is too large";
         }
+        $_SESSION['id'] = 9999;
         header("Location: ../users.php");
         
     }else{

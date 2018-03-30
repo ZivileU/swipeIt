@@ -33,6 +33,9 @@
                     <input type="text" class="form-control" name="txtPassword" placeholder="Password">
                 </div>
                 <div class="form-group">
+                    <input type="text" class="form-control" name="txtHobbies" placeholder="Your hobbies">
+                </div>
+                <div class="form-group">
                     <input type="text" class="form-control" name="iAge" placeholder="Age" data-min="1">
                 </div>
                 <div class="form-group">

@@ -11,11 +11,24 @@
 		$randomUser = $ajUsers[$randomKey];
 		$jDisplayUser = $randomUser;
 	}
+
+	$files = glob("img/*.*");
+	for ($i=0; $i<count($files); $i++) {
+		$file = $files[$i];
+		$aImagePath = pathinfo($file);
+		$sImageName = $aImagePath['filename'];
+		$sExtension = $aImagePath['extension'];
+
+		if ($sImageName = $jDisplayUser->id) {
+			$sImagePath = "img/$sImageName.$sExtension";
+		}
+	}
+
 ?>
 
 <div class="container page d-flex justify-content-around align-items-center mt-3 mb-3">
     <div class='card' style='width: 18rem;'>
-    <!-- <img class='card-img-top' src='<?php echo $jDisplayUser->img; ?>' alt='Card image cap'> -->
+    <img class='card-img-top' src='<?php echo $sImagePath; ?>' alt='Card image cap'>
 		<div class='card-body'>
 			<h5 class='card-title'><?php echo $jDisplayUser->firstname.' '.$jDisplayUser->lastname; ?></h5>
 			<a href='controlers/like-save.php?id=<?php echo $jDisplayUser->id; ?>&like=true' class='btn btn-dark' id="btnYes">Yes</a>
