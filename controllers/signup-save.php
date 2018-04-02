@@ -30,6 +30,7 @@
             $jUser->hobbies = $sHobbies;
             $jUser->age = $sAge;
             $jUser->id = $sUniqueId;
+            $jUser->userslikedyou = [];
             array_push( $ajUsers , $jUser );
             $sajUsers = json_encode( $ajUsers  );
             file_put_contents( '../users.txt' , $sajUsers );
@@ -49,6 +50,9 @@
             echo "The photo file is too large";
         }
         $_SESSION['id'] = 9999;
+        $_SESSION['userid'] = $jUser->id;
+        $_SESSION['name'] = $jUser->firstname;
+        $_SESSION['usersliked'] = $jUser->userslikedyou;
         header("Location: ../users.php");
         
     }else{

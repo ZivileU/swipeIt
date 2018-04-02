@@ -18,7 +18,7 @@
   <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">SwipeIt</a>
+            <a class="navbar-brand" href="index.php">SwipeIt</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,10 +28,13 @@
                 <?php
                     if (isset($_SESSION['id'])) {
                         echo '<li class="nav-item active">';
-                            echo '<a class="nav-link" href="#">Profile<span class="sr-only">(current)</span></a>';
+                            echo '<a class="nav-link" href="profile.php">Profile<span class="sr-only">(current)</span></a>';
                         echo '</li>';
                         echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="controlers/logout.php">LogOut</a>';
+                            echo '<a class="nav-link" href="users.php">Users</a>';
+                        echo '</li>';
+                        echo '<li class="nav-item">';
+                            echo '<a class="nav-link" href="controllers/logout.php">LogOut</a>';
                         echo '</li>';
                         echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="#">Locate Users</a>';

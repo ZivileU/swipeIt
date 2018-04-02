@@ -4,7 +4,7 @@
 
         <div id="pageLogIn" class="container page">
             <p class="h3 mx-auto">Log In</p>
-            <form id="logInForm" name="logInForm" action="controlers/verify-login.php" method="post" style="width: 300px;">
+            <form id="logInForm" name="logInForm" action="controllers/verify-login.php" method="post" style="width: 300px;">
                 <div class="form-group">
                     <input type="text" class="form-control" name="loginEmail" placeholder="Email" data-min="5" data-max="30">
                 </div>
@@ -18,7 +18,7 @@
 
         <div id="pageSignUp" class="container page">
             <p class="h3 mx-auto">Sign Up</p>
-            <form name="signUpForm" action="controlers/signup-save.php" method="post" enctype="multipart/form-data" style="width: 300px;">
+            <form name="signUpForm" action="controllers/signup-save.php" method="post" enctype="multipart/form-data" style="width: 300px;">
 
                 <div class="form-group">
                     <input type="text" class="form-control" name="txtFirstName" placeholder="First Name">
