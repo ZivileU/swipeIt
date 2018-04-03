@@ -14,6 +14,7 @@
                 $_SESSION['id'] = 9999;
                 $_SESSION['userid'] = $jUser->id;
                 $_SESSION['name'] = $jUser->firstname;
+                $_SESSION['usertype'] = $jUser->usertype;
                 $_SESSION['usersliked'] = $jUser->userslikedyou;
                 header("Location: ../users.php");
                 exit;

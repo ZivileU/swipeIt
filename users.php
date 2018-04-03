@@ -6,9 +6,9 @@
 	$sajUsers = file_get_contents( 'users.txt' );
 	$ajUsers = json_decode( $sajUsers );
 	$iUserIdLogedin = $_SESSION['userid'];
+	$sUserType = $_SESSION['usertype'];
 	$jDisplayUser = '';
 	$jUserLogedIn = '';
-	$aImagePath;
 
 	foreach( $ajUsers as $iIndex => $jUser ){
 		$randomKey = array_rand($ajUsers, 1);     
@@ -41,7 +41,8 @@
 
 	if (empty($jDisplayUser)) {
 		$jDisplayUser = $jUserLogedIn;
-		echo "<h4 class='text-center'>You have reached your swiping limit :(</h4>";
+		print_r($jUserLogedIn->firstname);
+		echo "<h3 class='text-center'>You have reached your swiping limit :(</h3>";
 	}
 	
 	$files = glob("img/*.*");
@@ -52,8 +53,6 @@
 		$sExtension = $aImagePath['extension'];
 
 		if ($sImageName == $jDisplayUser->id) {
-			$sImagePath = "img/$sImageName.$sExtension";
-		}else if ($sImageName == $iUserIdLogedin) {
 			$sImagePath = "img/$sImageName.$sExtension";
 		}
 	}
@@ -66,13 +65,15 @@
     <div class='card' style='width: 18rem;'>
     <img class='card-img-top' src='<?php echo $sImagePath; ?>' alt='Card image cap'>
 		<div class='card-body'>
-			<h5 class='card-title'><?php echo $jDisplayUser->firstname.' '.$jDisplayUser->lastname; ?></h5>
+			<h5 class='card-title mb-4'><?php echo $jDisplayUser->firstname.' '.$jDisplayUser->lastname; ?></h5>
+			<h6 class='card-title <?php if($sUserType!=='vip'){echo 'd-none';}?>'>Age: <?php echo "{$jDisplayUser->age} Likes: {$jDisplayUser->like}"?> </h6>
+			<h6 class='card-title <?php if($sUserType!=='vip'){echo 'd-none';}?>'>Hobbies: <?php echo $jDisplayUser->hobbies;?> </h6>
 			<a href='controllers/like-save.php?id=<?php echo $jDisplayUser->id; ?>&like=true' class='btn btn-dark <?php if($jDisplayUser->id==$iUserIdLogedin){echo 'd-none';} ?>' id="btnYes">Yes</a>
 			<a href='controllers/like-save.php?id=<?php echo $jDisplayUser->id; ?>&like=false' class='btn btn-dark <?php if($jDisplayUser->id==$iUserIdLogedin){echo 'd-none';} ?>' id="btnNo">No</a>
+			<a href='delete.php?id=<?php echo $jDisplayUser->id; ?>' class='btn btn-dark <?php if($sUserType!=='admin'){echo 'd-none';} ?>' id="btnDelete">Delete</a>
 		</div>
   	</div>
 </div>
-	}
 
 <?php
   	require_once 'templates/footer.php';   

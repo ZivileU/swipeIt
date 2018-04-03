@@ -12,6 +12,7 @@
             if ($iMatchedUserId == $jUser->id) {
                 $jDisplayUser = $jUser;
                 echo "<h4 class='text-center'>You have a match!</h4>";
+                echo "<script type='text/javascript'>playSound();</script>";
             }
         }else if ($iUserIdLogedin == $jUser->id) {
             $jDisplayUser = $jUser; 

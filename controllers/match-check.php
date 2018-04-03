@@ -24,4 +24,3 @@
     }else {
         header("Location: ../users.php");
     }
-?>

@@ -37,7 +37,7 @@
                             echo '<a class="nav-link" href="controllers/logout.php">LogOut</a>';
                         echo '</li>';
                         echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="#">Locate Users</a>';
+                            echo '<a class="nav-link" href="locate.php">Locate User</a>';
                         echo '</li>';
                     }else{
                         echo '<li class="nav-item">';
