@@ -8,7 +8,6 @@
 	$iUserIdLogedin = $_SESSION['userid'];
 	$sUserType = $_SESSION['usertype'];
 	$jDisplayUser = '';
-	$jUserLogedIn = '';
 
 	foreach( $ajUsers as $iIndex => $jUser ){
 		$randomKey = array_rand($ajUsers, 1);     
@@ -17,7 +16,6 @@
 		if ($iUserIdLogedin !== $randomUser->id) {
 			if ( !empty($aUsersLiked) ) {
 				$bNotLiked = true;
-				print_r($aUsersLiked);
 				foreach ($aUsersLiked as $iUserId) {		   
 					if ($iUserIdLogedin == $iUserId) {
 						$bNotLiked = false;
@@ -34,15 +32,16 @@
 				$jDisplayUser = $randomUser;
 				break;
 			}
-		}else {
-			$jUserLogedIn = $randomUser;
 		}
 	}
 
 	if (empty($jDisplayUser)) {
-		$jDisplayUser = $jUserLogedIn;
-		print_r($jUserLogedIn->firstname);
-		echo "<h3 class='text-center'>You have reached your swiping limit :(</h3>";
+		foreach ($ajUsers as $jUser) {
+			if ($jUser->id==$iUserIdLogedin) {
+				$jDisplayUser = $jUser;
+				echo "<h3 class='text-center'>You have reached your swiping limit :(</h3>";
+			}
+		}
 	}
 	
 	$files = glob("img/*.*");
@@ -58,6 +57,7 @@
 	}
 		
 	print_r ($_SESSION['name']);
+	print_r ($_SESSION['usertype']);
 		
 ?>
 

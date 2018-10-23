@@ -31,6 +31,7 @@
             $jUser->age = $sAge;
             $jUser->id = $sUniqueId;
             $jUser->userslikedyou = [];
+            $jUser->usertype = 'standard';
             array_push( $ajUsers , $jUser );
             $sajUsers = json_encode( $ajUsers  );
             file_put_contents( '../users.txt' , $sajUsers );
